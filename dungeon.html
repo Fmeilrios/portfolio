@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dungeon Crawler – Miro Richhardt</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="gamethemes.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-outer);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    color: var(--color-text);
+    padding: 2rem 1rem;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  h1 {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    transition: color 0.25s;
+  }
+
+  .game-wrap {
+    border: 1px solid var(--bg-border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-game);
+    box-shadow: 0 0 40px rgba(226,75,74,0.08);
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  #stats {
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--bg-border);
+    padding: 0.6rem 1rem;
+    font-size: 12px;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+
+  #map {
+    display: block;
+    padding: 1rem;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--color-wall);
+    white-space: pre;
+    background: var(--bg-game);
+    transition: background 0.25s, color 0.25s;
+  }
+
+  #log {
+    background: var(--bg-panel);
+    border-top: 1px solid var(--bg-border);
+    padding: 0.6rem 1rem;
+    font-size: 11px;
+    color: var(--color-muted);
+    line-height: 1.7;
+    min-height: 5rem;
+    white-space: pre-wrap;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+
+  .hint {
+    margin-top: 1rem;
+    font-size: 11px;
+    color: var(--color-dim);
+    letter-spacing: 0.08em;
+    transition: color 0.25s;
+  }
+
+  .back {
+    margin-bottom: 1.25rem;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--color-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  .back:hover { color: var(--color-accent); }
+</style>
+</head>
+<body>
+
+<div class="theme-switcher" role="group" aria-label="Theme">
+  <button class="theme-btn" data-theme="light" title="Light"><i class="ti ti-sun" aria-hidden="true"></i></button>
+  <button class="theme-btn" data-theme="reader" title="Reader"><i class="ti ti-book" aria-hidden="true"></i></button>
+  <button class="theme-btn" data-theme="dark" title="Dark"><i class="ti ti-moon" aria-hidden="true"></i></button>
+  <button class="theme-btn" data-theme="black" title="Black"><i class="ti ti-device-desktop" aria-hidden="true"></i></button>
+</div>
+
+<a class="back game-fade" href="miro_richhardt_resume.html">← zurück zum lebenslauf</a>
+<h1 class="game-fade">☠ ASCII Dungeon Crawler</h1>
+
+<div class="game-wrap game-fade">
+  <div id="stats"></div>
+  <pre id="map"></pre>
+  <div id="log"></div>
+</div>
+
+<p class="hint game-fade">
+  WASD / Pfeiltasten &nbsp;·&nbsp;
+  <span id="hint-player">☺</span> Du &nbsp;·&nbsp;
+  <span id="hint-enemies">o &lt; + *</span> Feinde &nbsp;·&nbsp;
+  <span id="hint-flask">§</span> Heiltrank &nbsp;·&nbsp;
+  <span id="hint-atk">^</span> ATK-Drop &nbsp;·&nbsp;
+  <span id="hint-stairs">≡</span> Treppe &nbsp;·&nbsp;
+  R = Neustart
+</p>
+
+<script src="gamethemes.js"></script>
+<script src="dungeon.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+# AI tools
+.claude/
+.cursor/
+.copilot/
+.aider*
+.continue/
+.codeium/
+.tabnine/
+.windsurf/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnp/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.user
+*.swp
+*.swo
+*~
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# Temp
+*.tmp
+*.temp
+.cache/
+dist/

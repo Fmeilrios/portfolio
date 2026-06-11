@@ -1,0 +1,123 @@
+/* ── Game theme tokens (dark = default) ── */
+:root {
+  --bg-outer:        #0a0a0a;
+  --bg-game:         #0f0f0f;
+  --bg-panel:        #141414;
+  --bg-border:       #1a1a1a;
+  --bg-border-light: #2a2a2a;
+  --color-text:      #c8b87a;
+  --color-muted:     #5a5a5a;
+  --color-dim:       #3a3a3a;
+  --color-accent:    #e24b4a;
+  --color-green:     #56b356;
+  --color-blue:      #5b9bd5;
+  --color-gold:      #e8a030;
+  --color-wall:      #7a7a7a;
+  --switcher-bg:     #0f0f0f;
+  --switcher-border: #2a2a2a;
+  --switcher-text:   #5a5a5a;
+  --switcher-active: #e24b4a;
+}
+
+[data-theme="light"] {
+  --bg-outer:        #f0ede8;
+  --bg-game:         #ffffff;
+  --bg-panel:        #f8f7f5;
+  --bg-border:       #e5e3df;
+  --bg-border-light: #d0ccc7;
+  --color-text:      #1a1a1a;
+  --color-muted:     #6b6b6b;
+  --color-dim:       #9a9a9a;
+  --color-accent:    #c03030;
+  --color-green:     #2a7a2a;
+  --color-blue:      #2a60aa;
+  --color-gold:      #b07020;
+  --color-wall:      #888888;
+  --switcher-bg:     #ffffff;
+  --switcher-border: #e5e3df;
+  --switcher-text:   #6b6b6b;
+  --switcher-active: #c03030;
+}
+
+[data-theme="reader"] {
+  --bg-outer:        #d8cfc0;
+  --bg-game:         #e8e0d0;
+  --bg-panel:        #ddd4c0;
+  --bg-border:       #c8bfaf;
+  --bg-border-light: #b8af9f;
+  --color-text:      #2c2010;
+  --color-muted:     #7a6a55;
+  --color-dim:       #9a8a75;
+  --color-accent:    #c07030;
+  --color-green:     #3a6a20;
+  --color-blue:      #2a5a8a;
+  --color-gold:      #a06010;
+  --color-wall:      #8a7a65;
+  --switcher-bg:     #e8e0d0;
+  --switcher-border: #c8bfaf;
+  --switcher-text:   #7a6a55;
+  --switcher-active: #c07030;
+}
+
+[data-theme="black"] {
+  --bg-outer:        #000000;
+  --bg-game:         #000000;
+  --bg-panel:        #050505;
+  --bg-border:       #0f0f0f;
+  --bg-border-light: #1a1a1a;
+  --color-text:      #ffffff;
+  --color-muted:     #666666;
+  --color-dim:       #444444;
+  --color-accent:    #e24b4a;
+  --color-green:     #44cc44;
+  --color-blue:      #44aaff;
+  --color-gold:      #ffaa00;
+  --color-wall:      #888888;
+  --switcher-bg:     #050505;
+  --switcher-border: #1a1a1a;
+  --switcher-text:   #666666;
+  --switcher-active: #e24b4a;
+}
+
+/* ── Load animations ── */
+.game-fade {
+  opacity: 0;
+}
+.game-fade.visible {
+  animation: gameFadeSlide 0.4s ease both;
+  opacity: 1;
+}
+@keyframes gameFadeSlide {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Shared switcher ── */
+.theme-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 3px;
+  background: var(--switcher-bg);
+  border: 0.5px solid var(--switcher-border);
+  border-radius: 24px;
+  padding: 3px;
+  z-index: 100;
+  transition: background 0.25s, border-color 0.25s;
+}
+.theme-btn {
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--switcher-text);
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+.theme-btn.active {
+  background: var(--switcher-active);
+  color: #ffffff;
+}
