@@ -13,7 +13,6 @@ Interactive resume with 4 themes (Light, Reader, Dark, Black/OLED) and animated 
 
 ### Server Farm Idle Game (`serverfarm.html`)
 Browser idle game where you build a server infrastructure from a Raspberry Pi up to a full Data Center.
-- 8 hardware tiers with exponential cost scaling
 - Upgrade system with stacking multipliers and auto-sell mechanics
 - Offline progress with save/load via localStorage
 
@@ -21,7 +20,6 @@ Browser idle game where you build a server infrastructure from a Raspberry Pi up
 Turn-based roguelike rendered entirely in ASCII, playable in the browser with keyboard controls.
 - Procedural room generation with corridor connections across 3 floors
 - Enemy AI with pathfinding, combat system, and item drops
-- WASD / arrow key controls
 
 ---
 
