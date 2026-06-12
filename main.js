@@ -44,6 +44,7 @@
   }
 
   window.onLangChange = staggerElements;
+  window.staggerElements = staggerElements;
 
   document.readyState === 'loading'
     ? document.addEventListener('DOMContentLoaded', init)
