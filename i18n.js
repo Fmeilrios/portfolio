@@ -58,6 +58,16 @@
       'game.dead':            '† Du bist gestorben. (R = Neustart)',
       'game.enemy.attack':    dmg => `Feind trifft dich! −${dmg} HP`,
       'game.stats':           (bar, hp, max, atk, floor, n) => `HP [${bar}] ${hp}/${max}   ATK ${atk}   Etage ${floor}/3   Feinde ${n}`,
+      // footer & contact
+      'footer.impressum':  'Impressum',
+      'footer.contact':    'Kontakt',
+      'contact.title':     'Kontakt',
+      'contact.name':      'Name',
+      'contact.email':     'E-Mail',
+      'contact.message':   'Nachricht',
+      'contact.send':      'Senden',
+      'contact.success':   'Nachricht gesendet! Ich melde mich bald.',
+      'contact.error':     'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
       // serverfarm page
       'sf.back':              '← zurück zum lebenslauf',
       'sf.reset.title':       'Fortschritt zurücksetzen',
@@ -123,6 +133,16 @@
       'game.dead':            '† You died. (R = Restart)',
       'game.enemy.attack':    dmg => `Enemy hits you! −${dmg} HP`,
       'game.stats':           (bar, hp, max, atk, floor, n) => `HP [${bar}] ${hp}/${max}   ATK ${atk}   Floor ${floor}/3   Enemies ${n}`,
+      // footer & contact
+      'footer.impressum':  'Legal Notice',
+      'footer.contact':    'Contact',
+      'contact.title':     'Contact',
+      'contact.name':      'Name',
+      'contact.email':     'Email',
+      'contact.message':   'Message',
+      'contact.send':      'Send',
+      'contact.success':   'Message sent! I\'ll get back to you soon.',
+      'contact.error':     'Something went wrong. Please try again.',
       // serverfarm page
       'sf.back':              '← back to resume',
       'sf.reset.title':       'Reset progress',

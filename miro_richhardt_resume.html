@@ -9,14 +9,26 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="theme-switcher" role="group" aria-label="Theme">
-  <button class="theme-btn" data-theme="light" title="Light"><i class="ti ti-sun" aria-hidden="true"></i></button>
-  <button class="theme-btn" data-theme="reader" title="Reader"><i class="ti ti-book" aria-hidden="true"></i></button>
-  <button class="theme-btn" data-theme="dark" title="Dark"><i class="ti ti-moon" aria-hidden="true"></i></button>
-  <button class="theme-btn" data-theme="black" title="Black (OLED)"><i class="ti ti-device-desktop" aria-hidden="true"></i></button>
-  <span class="switcher-sep"></span>
-  <button class="lang-btn" data-lang="de" onclick="applyLang('de')">DE</button>
-  <button class="lang-btn" data-lang="en" onclick="applyLang('en')">EN</button>
+<div class="switcher-wrap">
+  <div class="theme-switcher" role="group" aria-label="Theme">
+    <button class="theme-btn" data-theme="light" title="Light"><i class="ti ti-sun" aria-hidden="true"></i></button>
+    <button class="theme-btn" data-theme="reader" title="Reader"><i class="ti ti-book" aria-hidden="true"></i></button>
+    <button class="theme-btn" data-theme="dark" title="Dark"><i class="ti ti-moon" aria-hidden="true"></i></button>
+    <button class="theme-btn" data-theme="black" title="Black (OLED)"><i class="ti ti-device-desktop" aria-hidden="true"></i></button>
+    <span class="switcher-sep"></span>
+    <button class="lang-btn" data-lang="de" onclick="applyLang('de')">DE</button>
+    <button class="lang-btn" data-lang="en" onclick="applyLang('en')">EN</button>
+    <span class="switcher-sep"></span>
+    <button class="menu-btn" id="menu-toggle" aria-label="Navigate"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
+  </div>
+  <nav class="nav-dropdown" id="nav-dropdown" hidden>
+    <a class="nav-item" href="#education"   data-i18n="section.education">Studium</a>
+    <a class="nav-item" href="#projects"    data-i18n="section.projects">Projekte</a>
+    <a class="nav-item" href="#work"        data-i18n="section.work">Berufserfahrung</a>
+    <a class="nav-item" href="#skills"      data-i18n="section.skills">Skills</a>
+    <a class="nav-item" href="#interests"   data-i18n="section.interests">Interessen</a>
+    <a class="nav-item" href="#availability" data-i18n="section.avail">Verfügbarkeit</a>
+  </nav>
 </div>
 <div class="resume">
   <div class="accent-bar"></div>
@@ -32,14 +44,14 @@
             <i class="ti ti-map-pin" aria-hidden="true"></i>
             Kaarst
           </a>
-          <span class="contact-item">
+          <button class="contact-item contact-item--btn" onclick="document.getElementById('open-contact').click()">
             <i class="ti ti-mail" aria-hidden="true"></i>
             <span data-i18n="resume.on-request">auf Anfrage</span>
-          </span>
-          <span class="contact-item">
+          </button>
+          <button class="contact-item contact-item--btn" onclick="document.getElementById('open-contact').click()">
             <i class="ti ti-phone" aria-hidden="true"></i>
             <span data-i18n="resume.on-request">auf Anfrage</span>
-          </span>
+          </button>
         </div>
       </div>
       <div class="avatar">MR</div>
@@ -49,7 +61,7 @@
   <div class="body">
     <div class="main-col">
 
-      <div class="section-gap">
+      <div class="section-gap" id="education">
         <div class="section-label" data-i18n="section.education">Studium</div>
 
         <div class="entry">
@@ -79,7 +91,7 @@
         </div>
       </div>
 
-      <div class="section-gap">
+      <div class="section-gap" id="projects">
         <div class="section-label" data-i18n="section.projects">Projekte</div>
 
         <div class="entry" style="cursor:pointer" onclick="location.href='projects/serverfarm.html'">
@@ -108,7 +120,7 @@
         </div>
       </div>
 
-      <div class="section-gap">
+      <div class="section-gap" id="work">
         <div class="section-label" data-i18n="section.work">Berufserfahrung</div>
 
         <div class="entry">
@@ -128,7 +140,7 @@
 
     <div class="side-col">
 
-      <div class="section-gap">
+      <div class="section-gap" id="skills">
         <div class="section-label" data-i18n="section.skills">Skills</div>
 
         <div class="skill-group">
@@ -152,7 +164,7 @@
         </div>
       </div>
 
-      <div class="section-gap">
+      <div class="section-gap" id="interests">
         <div class="section-label" data-i18n="section.interests">Interessen</div>
         <div class="interest-list">
           <div class="interest-item"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i><span data-i18n="interest.games">Videospiele & Game Dev</span></div>
@@ -161,12 +173,41 @@
         </div>
       </div>
 
-      <div>
+      <div id="availability">
         <div class="section-label" data-i18n="section.avail">Verfügbarkeit</div>
         <div class="avail-detail" data-i18n-html="avail.detail">Kaarst · Mo–Sa<br>max. 17 Std./Woche</div>
         <div class="status-badge"><div class="dot"></div><span data-i18n="avail.badge">Aktiv auf Jobsuche</span></div>
       </div>
 
+    </div>
+  </div>
+
+  <footer class="resume-footer">
+    <span>© 2026 Miro Richhardt</span>
+    <span class="footer-sep">·</span>
+    <button class="footer-link-btn" id="open-contact" data-i18n="footer.contact">Kontakt</button>
+  </footer>
+
+  <div class="modal-overlay" id="contact-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close"><i class="ti ti-x" aria-hidden="true"></i></button>
+      <div class="modal-title" id="modal-title" data-i18n="contact.title">Kontakt</div>
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xvznwlze" method="POST">
+        <label class="form-label" for="cf-name" data-i18n="contact.name">Name</label>
+        <input class="form-input" id="cf-name" type="text" name="name" required autocomplete="name">
+        <label class="form-label" for="cf-email" data-i18n="contact.email">E-Mail</label>
+        <input class="form-input" id="cf-email" type="email" name="email" required autocomplete="email">
+        <label class="form-label" for="cf-message" data-i18n="contact.message">Nachricht</label>
+        <textarea class="form-input form-textarea" id="cf-message" name="message" rows="4" required></textarea>
+        <button class="form-submit" type="submit" data-i18n="contact.send">Senden</button>
+      </form>
+      <div class="form-success" id="form-success" hidden>
+        <i class="ti ti-circle-check" aria-hidden="true"></i>
+        <span data-i18n="contact.success">Nachricht gesendet! Ich melde mich bald.</span>
+      </div>
+      <div class="form-error" id="form-error" hidden>
+        <span data-i18n="contact.error">Etwas ist schiefgelaufen. Bitte versuche es erneut.</span>
+      </div>
     </div>
   </div>
 </div>
