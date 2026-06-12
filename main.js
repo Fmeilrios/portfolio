@@ -43,6 +43,8 @@
     staggerElements();
   }
 
+  window.onLangChange = staggerElements;
+
   document.readyState === 'loading'
     ? document.addEventListener('DOMContentLoaded', init)
     : init();

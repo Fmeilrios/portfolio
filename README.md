@@ -9,14 +9,14 @@ Personal portfolio and resume site built with vanilla HTML, CSS, and JavaScript.
 ## Pages
 
 ### Resume (`index.html`)
-Interactive resume with 4 themes (Light, Reader, Dark, Black/OLED) and animated entry transitions.
+Interactive resume with 4 themes (Light, Reader, Dark, Black/OLED), animated entry transitions, and full DE/EN localization.
 
-### Server Farm Idle Game (`serverfarm.html`)
+### Server Farm Idle Game (`projects/serverfarm.html`)
 Browser idle game where you build a server infrastructure from a Raspberry Pi up to a full Data Center.
 - Upgrade system with stacking multipliers and auto-sell mechanics
 - Offline progress with save/load via localStorage
 
-### ASCII Dungeon Crawler (`dungeon.html`)
+### ASCII Dungeon Crawler (`projects/dungeon.html`)
 Turn-based roguelike rendered entirely in ASCII, playable in the browser with keyboard controls.
 - Procedural room generation with corridor connections across 3 floors
 - Enemy AI with pathfinding, combat system, and item drops

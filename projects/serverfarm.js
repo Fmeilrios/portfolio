@@ -211,7 +211,7 @@ function buyUpgrade(id) {
 }
 
 function resetProgress() {
-  if (!confirm('Fortschritt wirklich zurücksetzen?')) return;
+  if (!confirm(t('sf.confirm.reset'))) return;
   localStorage.removeItem(SAVE_KEY);
   state = freshState();
   tickCount = 0;
@@ -294,7 +294,7 @@ function renderShop() {
 
   const owned = SERVERS.filter(s => state.servers[s.id] > 0);
   document.getElementById('farm-grid').innerHTML = owned.length === 0
-    ? `<div class="farm-row"><span class="farm-row-icon">·</span><span class="farm-row-name" style="color:var(--color-dim)">Empty — buy your first server</span></div>`
+    ? `<div class="farm-row"><span class="farm-row-icon">·</span><span class="farm-row-name" style="color:var(--color-dim)">${t('sf.farm.empty')}</span></div>`
     : owned.map(s => `<div class="farm-row active">
         <span class="farm-row-icon">${s.icon}</span>
         <span class="farm-row-name">${s.name}</span>
@@ -304,6 +304,7 @@ function renderShop() {
 }
 
 function onThemeChange() { renderShop(); }
+function onLangChange() { renderShop(); }
 
 document.addEventListener('keydown', ev => {
   if (ev.code === 'Space' && !ev.repeat) { ev.preventDefault(); processClick(); }

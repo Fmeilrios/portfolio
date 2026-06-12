@@ -202,9 +202,12 @@
   <button class="theme-btn" data-theme="reader" title="Reader"><i class="ti ti-book" aria-hidden="true"></i></button>
   <button class="theme-btn" data-theme="dark" title="Dark"><i class="ti ti-moon" aria-hidden="true"></i></button>
   <button class="theme-btn" data-theme="black" title="Black"><i class="ti ti-device-desktop" aria-hidden="true"></i></button>
+  <span class="switcher-sep"></span>
+  <button class="lang-btn" data-lang="de" onclick="applyLang('de')">DE</button>
+  <button class="lang-btn" data-lang="en" onclick="applyLang('en')">EN</button>
 </div>
 
-<a class="back game-fade" href="miro_richhardt_resume.html">← zurück zum lebenslauf</a>
+<a class="back game-fade" href="../miro_richhardt_resume.html" data-i18n="sf.back">← zurück zum lebenslauf</a>
 <h1 class="game-fade">⬛ Server Farm</h1>
 
 <div class="game game-fade">
@@ -213,7 +216,7 @@
     <div class="stat"><span class="stat-label">Ops/s</span><span class="stat-value blue" id="ops-s">0/s</span></div>
     <div class="stat"><span class="stat-label">Click Power</span><span class="stat-value" id="click-power">1</span></div>
     <div class="stat"><span class="stat-label">Total Earned</span><span class="stat-value red" id="total-earned">0</span></div>
-    <button onclick="resetProgress()" title="Fortschritt zurücksetzen" style="margin-left:auto;font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border:0.5px solid var(--bg-border-light);border-radius:4px;background:transparent;color:var(--color-dim);cursor:pointer;opacity:0.5;transition:opacity 0.15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">↺ reset</button>
+    <button onclick="resetProgress()" data-i18n-title="sf.reset.title" title="Fortschritt zurücksetzen" style="margin-left:auto;font-family:'Space Mono',monospace;font-size:10px;padding:4px 10px;border:0.5px solid var(--bg-border-light);border-radius:4px;background:transparent;color:var(--color-dim);cursor:pointer;opacity:0.5;transition:opacity 0.15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">↺ reset</button>
   </div>
 
   <div class="main">
@@ -227,20 +230,20 @@
       <button class="btn sell" onclick="sellOps(); this.blur()">[ SELL OPS ]</button>
     </div>
     <div>
-      <div class="section-label">Your Farm</div>
+      <div class="section-label" data-i18n="sf.farm.label">Your Farm</div>
       <div class="farm-grid" id="farm-grid">
-        <div class="farm-row"><span class="farm-row-icon">·</span><span class="farm-row-name" style="color:var(--color-dim)">Empty — buy your first server</span></div>
+        <div class="farm-row"><span class="farm-row-icon">·</span><span class="farm-row-name" style="color:var(--color-dim)" data-i18n="sf.farm.empty">Empty — buy your first server</span></div>
       </div>
     </div>
   </div>
 
   <div class="shop">
     <div class="shop-section">
-      <div class="section-label">Hardware</div>
+      <div class="section-label" data-i18n="sf.section.hardware">Hardware</div>
       <div id="server-list"></div>
     </div>
     <div class="shop-section">
-      <div class="section-label">Upgrades</div>
+      <div class="section-label" data-i18n="sf.section.upgrades">Upgrades</div>
       <div id="upgrade-list"></div>
     </div>
   </div>
@@ -250,6 +253,7 @@
   </div>
 </div>
 
+<script src="../i18n.js"></script>
 <script src="gamethemes.js"></script>
 <script src="serverfarm.js"></script>
 </body>

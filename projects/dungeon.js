@@ -8,7 +8,7 @@ function rnd(n) { return Math.floor(Math.random() * n); }
 function init() {
   floor = 1;
   player = { x: 0, y: 0, hp: 30, maxHp: 30, atk: 5 };
-  messages = ['Willkommen! WASD / Pfeiltasten. R = Neustart.'];
+  messages = [t('game.welcome')];
   gameOver = false;
   generateFloor();
   render();
@@ -128,7 +128,7 @@ function render() {
   const filled = Math.round((player.hp / player.maxHp) * 10);
   const bar = '█'.repeat(filled) + '░'.repeat(10 - filled);
   document.getElementById('stats').textContent =
-    `HP [${bar}] ${player.hp}/${player.maxHp}   ATK ${player.atk}   Etage ${floor}/3   Feinde ${enemies.length}`;
+    t('game.stats', bar, player.hp, player.maxHp, player.atk, floor, enemies.length);
 
   document.getElementById('log').textContent = messages.slice(-4).join('\n');
 }
@@ -146,13 +146,13 @@ function tryMove(dx, dy) {
     if (enemy.hp <= 0) {
       const ex = enemy.x, ey = enemy.y;
       enemies = enemies.filter(e => e !== enemy);
-      messages.push(`Feind besiegt! (+${dmg} Schaden)`);
+      messages.push(t('game.enemy.killed', dmg));
       if (Math.random() < 0.4) {
         items.push({ x: ex, y: ey, sym: '^', atk: 1 });
-        messages.push('Ein Angriffsbuff fiel zu Boden!');
+        messages.push(t('game.atk.drop'));
       }
     } else {
-      messages.push(`Treffer! ${dmg} Schaden → Feind HP: ${enemy.hp}`);
+      messages.push(t('game.enemy.hit', dmg, enemy.hp));
     }
     enemyTurn();
     render();
@@ -161,14 +161,14 @@ function tryMove(dx, dy) {
 
   if (map[ny][nx] === '≡') {
     if (floor >= 3) {
-      messages.push('★ Dungeon bezwungen! Du hast gewonnen! (R = Neustart)');
+      messages.push(t('game.win'));
       gameOver = true;
       player.x = nx; player.y = ny;
       render();
       return;
     }
     floor++;
-    messages.push(`Du steigst tiefer hinab... Etage ${floor}.`);
+    messages.push(t('game.floor.next', floor));
     generateFloor();
     render();
     return;
@@ -185,14 +185,14 @@ function tryMove(dx, dy) {
       if (overflow > 0) {
         player.maxHp += overflow;
         player.hp = player.maxHp;
-        messages.push(`Überheilung! Max HP +${overflow} (jetzt ${player.maxHp})`);
+        messages.push(t('game.overheal', overflow, player.maxHp));
       } else {
         player.hp += item.heal;
-        messages.push(`Heiltrank! +${item.heal} HP`);
+        messages.push(t('game.heal', item.heal));
       }
     } else if (item.sym === '^') {
       player.atk += item.atk;
-      messages.push(`Angriffsbuff! ATK +${item.atk} (jetzt ${player.atk})`);
+      messages.push(t('game.atk.buff', item.atk, player.atk));
     }
     items = items.filter(it => it !== item);
   }
@@ -210,9 +210,9 @@ function enemyTurn() {
     if (dist === 1) {
       const dmg = e.atk + rnd(3);
       player.hp = Math.max(0, player.hp - dmg);
-      messages.push(`Feind trifft dich! −${dmg} HP`);
+      messages.push(t('game.enemy.attack', dmg));
       if (player.hp <= 0) {
-        messages.push('† Du bist gestorben. (R = Neustart)');
+        messages.push(t('game.dead'));
         gameOver = true;
       }
       return;
@@ -236,6 +236,7 @@ function enemyTurn() {
 }
 
 function onThemeChange() { render(); }
+function onLangChange() { init(); }
 
 document.addEventListener('keydown', ev => {
   if (ev.key === 'r' || ev.key === 'R') { init(); return; }
