@@ -82,7 +82,7 @@ function applyOfflineGains(saved) {
   const secs = Math.min(elapsed, 8 * 3600);
   let ops = 0;
   SERVERS.forEach(s => { ops += s.ops * (saved.servers[s.id] || 0); });
-  ops *= saved.opsMult || 1;
+  ops *= state.opsMult || 1;
 
   const gained = ops * secs;
   if (gained < 1) return;
@@ -254,7 +254,7 @@ function renderStats() {
 function renderShop() {
   document.getElementById('server-list').innerHTML = SERVERS.map(s => {
     const count = state.servers[s.id] || 0;
-    const canBuy = state.credits >= s.cost;
+    const canBuy = state.credits >= serverCost(s, count);
     return `<div class="shop-item ${canBuy ? 'can-afford' : ''}" style="flex-direction:column;align-items:stretch;gap:4px;">
       <div class="shop-item-info">
         <span class="shop-icon">${s.icon}</span>

@@ -55,8 +55,8 @@ function generateFloor() {
   player.x = Math.floor(first.x + first.w/2);
   player.y = Math.floor(first.y + first.h/2);
 
-  const last = rooms[rooms.length - 1];
-  map[Math.floor(last.y + last.h/2)][Math.floor(last.x + last.w/2)] = '≡';
+  const last = rooms.length > 1 ? rooms[rooms.length - 1] : null;
+  if (last) map[Math.floor(last.y + last.h/2)][Math.floor(last.x + last.w/2)] = '≡';
 
   const enemyStats = {
     'o': f => ({ hp: 5  + f*2, atk: 1 + f }),

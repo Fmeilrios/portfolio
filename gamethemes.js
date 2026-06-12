@@ -6,7 +6,7 @@
   }
 
   function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme === 'dark' ? '' : theme);
+    document.documentElement.setAttribute('data-theme', theme === 'light' ? '' : theme);
     document.querySelectorAll('.theme-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.theme === theme);
     });
