@@ -144,7 +144,9 @@
   cursor: pointer;
   background: transparent;
   color: var(--switcher-text);
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, max-width 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+  max-width: 44px;
+  overflow: hidden;
 }
 .theme-btn.active {
   background: var(--switcher-active-bg);
@@ -155,6 +157,9 @@
   background: var(--switcher-border);
   margin: 4px 2px;
   align-self: stretch;
+  transition: max-width 0.35s ease, opacity 0.3s ease, margin 0.3s ease;
+  max-width: 1px;
+  overflow: hidden;
 }
 .lang-btn {
   font-size: 11px;
@@ -166,14 +171,34 @@
   cursor: pointer;
   background: transparent;
   color: var(--switcher-text);
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, max-width 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
   line-height: 1;
   font-family: inherit;
+  max-width: 40px;
+  overflow: hidden;
 }
 .lang-btn.active {
   background: var(--switcher-active-bg);
   color: var(--switcher-active-text);
 }
+.switcher-wrap.scrolled .theme-btn,
+.switcher-wrap.scrolled .lang-btn {
+  max-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.switcher-wrap.scrolled .switcher-sep {
+  max-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+  opacity: 0;
+}
+.switcher-wrap.scrolled .theme-switcher {
+  gap: 0;
+}
+
 .menu-btn {
   font-size: 16px;
   padding: 6px 10px;

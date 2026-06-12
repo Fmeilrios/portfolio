@@ -27,9 +27,9 @@
       group.forEach(el => { el.classList.remove('visible'); void el.offsetWidth; })
     );
 
-    eyebrow.forEach(el   => setTimeout(() => el.classList.add('visible'), 40));
-    tagline.forEach(el   => setTimeout(() => el.classList.add('visible'), 80));
-    contact.forEach(el   => setTimeout(() => el.classList.add('visible'), 110));
+    eyebrow.forEach(el        => setTimeout(() => el.classList.add('visible'), 40));
+    tagline.forEach(el        => setTimeout(() => el.classList.add('visible'), 80));
+    contact.forEach(el        => setTimeout(() => el.classList.add('visible'), 110));
     labels.forEach((el, i)    => setTimeout(() => el.classList.add('visible'), 150 + i * 50));
     entries.forEach((el, i)   => setTimeout(() => el.classList.add('visible'), 200 + i * 70));
     interests.forEach((el, i) => setTimeout(() => el.classList.add('visible'), 350 + i * 60));
@@ -38,15 +38,15 @@
   }
 
   function initContact() {
-    const openBtn = document.getElementById('open-contact');
-    const modal = document.getElementById('contact-modal');
+    const openBtn  = document.getElementById('open-contact');
+    const modal    = document.getElementById('contact-modal');
     const closeBtn = document.getElementById('modal-close');
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('form-success');
-    const error = document.getElementById('form-error');
+    const form     = document.getElementById('contact-form');
+    const success  = document.getElementById('form-success');
+    const error    = document.getElementById('form-error');
     if (!openBtn || !modal) return;
 
-    function openModal() { modal.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }
+    function openModal()  { modal.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; }
     function closeModal() { modal.hidden = true; document.body.style.overflow = ''; }
 
     openBtn.addEventListener('click', openModal);
@@ -80,31 +80,59 @@
   }
 
   function initMenu() {
-    const toggle = document.getElementById('menu-toggle');
+    const toggle   = document.getElementById('menu-toggle');
     const dropdown = document.getElementById('nav-dropdown');
+    const wrap     = document.querySelector('.switcher-wrap');
     if (!toggle || !dropdown) return;
 
-    toggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      const open = !dropdown.hidden;
-      dropdown.hidden = open;
-      toggle.classList.toggle('active', !open);
+    let skipDocClick = false;
+
+    function syncPill() {
+      if (wrap) wrap.classList.toggle('scrolled', window.scrollY > 80);
+    }
+
+    function closeDropdown() {
+      dropdown.hidden = true;
+      toggle.classList.remove('active');
+      syncPill();
+    }
+
+    toggle.addEventListener('click', function () {
+      skipDocClick = true;
+      if (dropdown.hidden) {
+        if (wrap) wrap.classList.remove('scrolled');
+        dropdown.hidden = false;
+        toggle.classList.add('active');
+      } else {
+        closeDropdown();
+      }
     });
 
     dropdown.addEventListener('click', function (e) {
       const item = e.target.closest('.nav-item');
       if (!item) return;
       e.preventDefault();
-      const target = document.querySelector(item.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      dropdown.hidden = true;
-      toggle.classList.remove('active');
+      const el = document.querySelector(item.getAttribute('href'));
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      skipDocClick = true;
+      closeDropdown();
     });
 
     document.addEventListener('click', function () {
-      dropdown.hidden = true;
-      toggle.classList.remove('active');
+      if (skipDocClick) { skipDocClick = false; return; }
+      if (!dropdown.hidden) closeDropdown();
     });
+
+    if (wrap) {
+      window.addEventListener('scroll', () => {
+        const past = window.scrollY > 80;
+        wrap.classList.toggle('scrolled', past);
+        if (past && !dropdown.hidden) {
+          dropdown.hidden = true;
+          toggle.classList.remove('active');
+        }
+      }, { passive: true });
+    }
   }
 
   function init() {
