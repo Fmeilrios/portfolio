@@ -97,14 +97,26 @@
       syncPill();
     }
 
+    if (wrap && localStorage.getItem('resume-pill-collapsed') === '1') {
+      wrap.classList.add('scrolled');
+    }
+
     toggle.addEventListener('click', function () {
       skipDocClick = true;
-      if (dropdown.hidden) {
-        if (wrap) wrap.classList.remove('scrolled');
+      if (!dropdown.hidden) {
+        dropdown.hidden = true;
+        toggle.classList.remove('active');
+        if (wrap) wrap.classList.add('scrolled');
+        localStorage.setItem('resume-pill-collapsed', '1');
+      } else if (wrap && wrap.classList.contains('scrolled')) {
+        wrap.classList.remove('scrolled');
         dropdown.hidden = false;
         toggle.classList.add('active');
+        localStorage.setItem('resume-pill-collapsed', '0');
       } else {
-        closeDropdown();
+        if (wrap) wrap.classList.add('scrolled');
+        toggle.classList.remove('active');
+        localStorage.setItem('resume-pill-collapsed', '1');
       }
     });
 

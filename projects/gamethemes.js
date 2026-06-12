@@ -19,6 +19,39 @@
     els.forEach((el, i) => setTimeout(() => el.classList.add('visible'), 80 + i * 100));
   }
 
+  function initPill() {
+    const toggle = document.getElementById('menu-toggle');
+    const wrap   = document.querySelector('.switcher-wrap');
+    if (!toggle || !wrap) return;
+
+    function syncPill() {
+      wrap.classList.toggle('scrolled', window.scrollY > 80);
+    }
+
+    if (localStorage.getItem('resume-pill-collapsed') === '1') {
+      wrap.classList.add('scrolled');
+    }
+
+    toggle.addEventListener('click', function () {
+      if (wrap.classList.contains('scrolled')) {
+        wrap.classList.remove('scrolled');
+        toggle.classList.add('active');
+        localStorage.setItem('resume-pill-collapsed', '0');
+      } else {
+        wrap.classList.add('scrolled');
+        toggle.classList.remove('active');
+        localStorage.setItem('resume-pill-collapsed', '1');
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        wrap.classList.add('scrolled');
+        toggle.classList.remove('active');
+      }
+    }, { passive: true });
+  }
+
   function init() {
     const saved = localStorage.getItem('resume-theme');
     const theme = saved && THEMES.includes(saved) ? saved : getSystemTheme();
@@ -29,6 +62,7 @@
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
       if (!localStorage.getItem('resume-theme')) applyTheme(e.matches ? 'dark' : 'light');
     });
+    initPill();
     staggerIn();
   }
 

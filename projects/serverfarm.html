@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="gamethemes.css">
+<script>(function(){var t=localStorage.getItem('resume-theme');if(t&&t!=='light')document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -197,15 +198,20 @@
 </head>
 <body>
 
-<div class="theme-switcher" role="group" aria-label="Theme">
-  <button class="theme-btn" data-theme="light" title="Light"><i class="ti ti-sun" aria-hidden="true"></i></button>
-  <button class="theme-btn" data-theme="reader" title="Reader"><i class="ti ti-book" aria-hidden="true"></i></button>
-  <button class="theme-btn" data-theme="dark" title="Dark"><i class="ti ti-moon" aria-hidden="true"></i></button>
-  <button class="theme-btn" data-theme="black" title="Black"><i class="ti ti-device-desktop" aria-hidden="true"></i></button>
-  <span class="switcher-sep"></span>
-  <button class="lang-btn" data-lang="de" onclick="applyLang('de')">DE</button>
-  <button class="lang-btn" data-lang="en" onclick="applyLang('en')">EN</button>
+<div class="switcher-wrap">
+  <div class="theme-switcher" role="group" aria-label="Theme">
+    <button class="theme-btn" data-theme="light" title="Light"><i class="ti ti-sun" aria-hidden="true"></i></button>
+    <button class="theme-btn" data-theme="reader" title="Reader"><i class="ti ti-book" aria-hidden="true"></i></button>
+    <button class="theme-btn" data-theme="dark" title="Dark"><i class="ti ti-moon" aria-hidden="true"></i></button>
+    <button class="theme-btn" data-theme="black" title="Black"><i class="ti ti-device-desktop" aria-hidden="true"></i></button>
+    <span class="switcher-sep"></span>
+    <button class="lang-btn" data-lang="de" onclick="applyLang('de')">DE</button>
+    <button class="lang-btn" data-lang="en" onclick="applyLang('en')">EN</button>
+    <span class="switcher-sep"></span>
+    <button class="menu-btn" id="menu-toggle" aria-label="Toggle pill">≡</button>
+  </div>
 </div>
+<script>(function(){if(localStorage.getItem('resume-pill-collapsed')==='1'){var w=document.querySelector('.switcher-wrap');if(w)w.classList.add('scrolled');}})();</script>
 
 <a class="back game-fade" href="../index.html" data-i18n="sf.back">← zurück zum lebenslauf</a>
 <h1 class="game-fade">⬛ Server Farm</h1>
@@ -254,7 +260,7 @@
 </div>
 
 <script src="../i18n.js?v=2"></script>
-<script src="gamethemes.js"></script>
+<script src="gamethemes.js?v=2"></script>
 <script src="serverfarm.js"></script>
 </body>
 </html>

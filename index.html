@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>(function(){var t=localStorage.getItem('resume-theme');if(t&&t!=='light')document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
 <div class="switcher-wrap">
@@ -30,6 +31,7 @@
     <a class="nav-item" href="#availability" data-i18n="section.avail">Verfügbarkeit</a>
   </nav>
 </div>
+<script>(function(){if(localStorage.getItem('resume-pill-collapsed')==='1'){var w=document.querySelector('.switcher-wrap');if(w)w.classList.add('scrolled');}})();</script>
 <div class="resume">
   <div class="accent-bar"></div>
 
