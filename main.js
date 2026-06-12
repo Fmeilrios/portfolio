@@ -137,11 +137,12 @@
 
     if (wrap) {
       window.addEventListener('scroll', () => {
-        const past = window.scrollY > 80;
-        wrap.classList.toggle('scrolled', past);
-        if (past && !dropdown.hidden) {
-          dropdown.hidden = true;
-          toggle.classList.remove('active');
+        if (window.scrollY > 80) {
+          wrap.classList.add('scrolled');
+          if (!dropdown.hidden) {
+            dropdown.hidden = true;
+            toggle.classList.remove('active');
+          }
         }
       }, { passive: true });
     }
